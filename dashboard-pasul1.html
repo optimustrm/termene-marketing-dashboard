@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PASUL 1: Social Media & Content Footprint - Termene.ro</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .period-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 20px;
+            margin-top: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .stat-card h3 {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        
+        .stat-card .value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+        
+        .stat-card .label {
+            font-size: 0.85rem;
+            color: #999;
+        }
+        
+        .chart-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .chart-container {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .chart-container h2 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        canvas {
+            max-height: 400px;
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        .platform-icon {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+        
+        .icon-facebook { background: #1877f2; }
+        .icon-instagram { background: #e4405f; }
+        .icon-youtube { background: #ff0000; }
+        .icon-linkedin { background: #0077b5; }
+        .icon-tiktok { background: #000000; }
+        
+        @media (max-width: 768px) {
+            .chart-grid {
+                grid-template-columns: 1fr;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 PASUL 1: Social Media & Content Footprint</h1>
+            <p>Termene.ro Marketing Intelligence Dashboard</p>
+            <div class="period-badge" id="periodBadge">Perioada: Loading...</div>
+            <div class="period-badge" id="lastUpdate">Actualizat: Loading...</div>
+        </header>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Social Media Followers</h3>
+                <div class="value" id="totalFollowers">-</div>
+                <div class="label">Total urmăritori</div>
+            </div>
+            
+            <div class="stat-card">
+                <h3>Website Sessions</h3>
+                <div class="value" id="totalSessions">-</div>
+                <div class="label">Vizite pe site (ultim 30 zile)</div>
+            </div>
+            
+            <div class="stat-card">
+                <h3>Website Users</h3>
+                <div class="value" id="totalUsers">-</div>
+                <div class="label">Utilizatori unici</div>
+            </div>
+            
+            <div class="stat-card">
+                <h3>Pageviews</h3>
+                <div class="value" id="totalPageviews">-</div>
+                <div class="label">Vizualizări pagini</div>
+            </div>
+            
+            <div class="stat-card">
+                <h3>Bounce Rate</h3>
+                <div class="value" id="bounceRate">-</div>
+                <div class="label">Rata de respingere</div>
+            </div>
+            
+            <div class="stat-card">
+                <h3>New Users</h3>
+                <div class="value" id="newUsers">-</div>
+                <div class="label">Utilizatori noi</div>
+            </div>
+        </div>
+        
+        <div class="chart-grid">
+            <div class="chart-container">
+                <h2>Social Media Breakdown</h2>
+                <canvas id="socialChart"></canvas>
+            </div>
+            
+            <div class="chart-container">
+                <h2>Website Traffic Overview</h2>
+                <canvas id="trafficChart"></canvas>
+            </div>
+        </div>
+        
+        <div class="chart-grid">
+            <div class="chart-container">
+                <h2>Traffic by Device</h2>
+                <canvas id="deviceChart"></canvas>
+            </div>
+            
+            <div class="chart-container">
+                <h2>User Acquisition</h2>
+                <canvas id="userChart"></canvas>
+            </div>
+        </div>
+        
+        <footer class="footer">
+            <p>⚙️ OPTIMUS Marketing Intelligence System | Termene.ro</p>
+            <p>Dashboard generat automat din date: YouTube API, Meta Graph API, Google Analytics 4, Search Console</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Load data
+        fetch('output/pasul1-social-content.json')
+            .then(response => response.json())
+            .then(data => {
+                console.log('Data loaded:', data);
+                
+                // Update header
+                document.getElementById('periodBadge').textContent = `Perioada: ${data.period_days} zile`;
+                document.getElementById('lastUpdate').textContent = `Actualizat: ${new Date(data.generated_at).toLocaleString('ro-RO')}`;
+                
+                // Update stat cards
+                const totalFollowers = (data.social_media.facebook?.followers || 0) + 
+                                     (data.social_media.instagram?.followers || 0) + 
+                                     (data.social_media.youtube?.subscribers || 0);
+                document.getElementById('totalFollowers').textContent = totalFollowers.toLocaleString('ro-RO');
+                document.getElementById('totalSessions').textContent = (data.website_traffic?.sessions || 0).toLocaleString('ro-RO');
+                document.getElementById('totalUsers').textContent = (data.website_traffic?.users || 0).toLocaleString('ro-RO');
+                document.getElementById('totalPageviews').textContent = (data.website_traffic?.pageviews || 0).toLocaleString('ro-RO');
+                document.getElementById('bounceRate').textContent = (data.website_traffic?.bounce_rate || 0).toFixed(1) + '%';
+                document.getElementById('newUsers').textContent = (data.website_traffic?.new_users || 0).toLocaleString('ro-RO');
+                
+                // Social Media Chart
+                const socialCtx = document.getElementById('socialChart').getContext('2d');
+                new Chart(socialCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Facebook', 'Instagram', 'YouTube'],
+                        datasets: [{
+                            label: 'Followers/Subscribers',
+                            data: [
+                                data.social_media.facebook?.followers || 0,
+                                data.social_media.instagram?.followers || 0,
+                                data.social_media.youtube?.subscribers || 0
+                            ],
+                            backgroundColor: [
+                                'rgba(24, 119, 242, 0.8)',
+                                'rgba(228, 64, 95, 0.8)',
+                                'rgba(255, 0, 0, 0.8)'
+                            ],
+                            borderColor: [
+                                'rgb(24, 119, 242)',
+                                'rgb(228, 64, 95)',
+                                'rgb(255, 0, 0)'
+                            ],
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    callback: function(value) {
+                                        return value.toLocaleString('ro-RO');
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+                
+                // Traffic Overview Chart
+                const trafficCtx = document.getElementById('trafficChart').getContext('2d');
+                new Chart(trafficCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Sessions', 'Users', 'New Users'],
+                        datasets: [{
+                            data: [
+                                data.website_traffic?.sessions || 0,
+                                data.website_traffic?.users || 0,
+                                data.website_traffic?.new_users || 0
+                            ],
+                            backgroundColor: [
+                                'rgba(102, 126, 234, 0.8)',
+                                'rgba(118, 75, 162, 0.8)',
+                                'rgba(237, 100, 166, 0.8)'
+                            ],
+                            borderWidth: 2,
+                            borderColor: '#fff'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        plugins: {
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }
+                });
+                
+                // Device Chart (placeholder - will need real data)
+                const deviceCtx = document.getElementById('deviceChart').getContext('2d');
+                new Chart(deviceCtx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Desktop', 'Mobile', 'Tablet'],
+                        datasets: [{
+                            data: [54, 42, 4], // Example percentages
+                            backgroundColor: [
+                                'rgba(54, 162, 235, 0.8)',
+                                'rgba(255, 206, 86, 0.8)',
+                                'rgba(75, 192, 192, 0.8)'
+                            ],
+                            borderWidth: 2,
+                            borderColor: '#fff'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        plugins: {
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }
+                });
+                
+                // User Acquisition Chart
+                const userCtx = document.getElementById('userChart').getContext('2d');
+                new Chart(userCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Total Users', 'New Users', 'Returning'],
+                        datasets: [{
+                            label: 'Users',
+                            data: [
+                                data.website_traffic?.users || 0,
+                                data.website_traffic?.new_users || 0,
+                                (data.website_traffic?.users || 0) - (data.website_traffic?.new_users || 0)
+                            ],
+                            backgroundColor: [
+                                'rgba(102, 126, 234, 0.8)',
+                                'rgba(46, 213, 115, 0.8)',
+                                'rgba(255, 159, 64, 0.8)'
+                            ],
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    callback: function(value) {
+                                        return value.toLocaleString('ro-RO');
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Error loading data:', error);
+                alert('Eroare la încărcarea datelor. Verifică consola pentru detalii.');
+            });
+    </script>
+</body>
+</html>
