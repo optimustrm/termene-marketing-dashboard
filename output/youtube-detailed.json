@@ -1,6 +1,6 @@
 {
   "channel_id": "UC_y6JPOGrftHSNnU9VPcXXQ",
-  "timestamp": "2026-02-27T09:02:59.354455Z",
+  "timestamp": "2026-02-27T09:07:33.861753Z",
   "filter": {
     "days": 30,
     "all": false,
@@ -26,10 +26,10 @@
       "published_at": "2026-02-23T07:00:29Z",
       "duration": "PT56M36S",
       "metrics": {
-        "views": 2014,
+        "views": 2036,
         "likes": 69,
         "comments": 9,
-        "engagement_rate": 3.87
+        "engagement_rate": 3.83
       }
     },
     {
@@ -242,7 +242,7 @@
       "published_at": "2026-02-23T10:00:38Z",
       "duration": "PT49S",
       "metrics": {
-        "views": 356,
+        "views": 358,
         "likes": 5,
         "comments": 0,
         "engagement_rate": 1.4

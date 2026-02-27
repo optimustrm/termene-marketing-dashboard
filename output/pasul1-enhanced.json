@@ -1,0 +1,276 @@
+{
+  "name": "PASUL 1 Enhanced - Social Media & Content Footprint",
+  "pasul": 1,
+  "generated_at": "2026-02-27T09:02:45Z",
+  "period_days": 30,
+  "summary": {},
+  "youtube": {
+    "channel_stats": {
+      "subscribers": 12000,
+      "total_views": 5447075,
+      "video_count": 2153,
+      "hidden_subscriber_count": false
+    },
+    "top_videos": [
+      {
+        "video_id": "zELTbT258s8",
+        "title": "Cristian Erbașu: „Suntem la maxim din toate punctele de vedere” | A fost odată în business",
+        "published_at": "2026-02-13T16:00:06Z",
+        "duration": "PT1H5M31S",
+        "metrics": {
+          "views": 5884,
+          "likes": 123,
+          "comments": 7,
+          "engagement_rate": 2.21
+        }
+      },
+      {
+        "video_id": "fhNrXB2sW0s",
+        "title": "Unde investim în 2026? | Mihai Constantinescu (Amundi AM) | Cu cifrele pe masă",
+        "published_at": "2026-02-23T07:00:29Z",
+        "duration": "PT56M36S",
+        "metrics": {
+          "views": 2014,
+          "likes": 69,
+          "comments": 9,
+          "engagement_rate": 3.87
+        }
+      },
+      {
+        "video_id": "XsczWLXKkbc",
+        "title": "Unde investești 1 miliard de euro? | Sorin Preda, Global Vision | A fost odată în business",
+        "published_at": "2026-02-20T15:01:02Z",
+        "duration": "PT1H46S",
+        "metrics": {
+          "views": 1101,
+          "likes": 40,
+          "comments": 6,
+          "engagement_rate": 4.18
+        }
+      },
+      {
+        "video_id": "1awAFHobjgs",
+        "title": "Compania Erbașu a ajuns la 3600 de angajați și 3 miliarde cifră de afaceri",
+        "published_at": "2026-02-14T13:15:00Z",
+        "duration": "PT27S",
+        "metrics": {
+          "views": 1019,
+          "likes": 6,
+          "comments": 0,
+          "engagement_rate": 0.59
+        }
+      },
+      {
+        "video_id": "6jyKzzLGWco",
+        "title": "Cristian Erbașu spune povestea companiei de construcții la ”A fost odată în business”",
+        "published_at": "2026-02-16T18:00:06Z",
+        "duration": "PT37S",
+        "metrics": {
+          "views": 843,
+          "likes": 16,
+          "comments": 0,
+          "engagement_rate": 1.9
+        }
+      },
+      {
+        "video_id": "k8B4rL8gQiM",
+        "title": "Schimbarea decisivă de pe piața de construcții din România",
+        "published_at": "2026-02-15T12:45:09Z",
+        "duration": "PT46S",
+        "metrics": {
+          "views": 774,
+          "likes": 10,
+          "comments": 0,
+          "engagement_rate": 1.29
+        }
+      },
+      {
+        "video_id": "Kpf_j41pztM",
+        "title": "Sorin Preda (Global Vision), la emisiunea „A fost odată în business",
+        "published_at": "2026-02-20T16:06:46Z",
+        "duration": "PT47S",
+        "metrics": {
+          "views": 726,
+          "likes": 3,
+          "comments": 1,
+          "engagement_rate": 0.55
+        }
+      },
+      {
+        "video_id": "ixIz3rlkRgA",
+        "title": "Generația Connex: cum s-au format managerii de astăzi din România.",
+        "published_at": "2026-02-21T07:00:37Z",
+        "duration": "PT49S",
+        "metrics": {
+          "views": 692,
+          "likes": 14,
+          "comments": 1,
+          "engagement_rate": 2.17
+        }
+      },
+      {
+        "video_id": "dw-fxO1PTIE",
+        "title": "Ce contracte a câștigat Construcții Erbașu?",
+        "published_at": "2026-02-15T17:15:03Z",
+        "duration": "PT42S",
+        "metrics": {
+          "views": 610,
+          "likes": 7,
+          "comments": 0,
+          "engagement_rate": 1.15
+        }
+      },
+      {
+        "video_id": "anyCO9EX1-Y",
+        "title": "Cele doua opțiuni pe care le are un startup din România",
+        "published_at": "2026-02-18T19:00:02Z",
+        "duration": "PT22S",
+        "metrics": {
+          "views": 584,
+          "likes": 3,
+          "comments": 0,
+          "engagement_rate": 0.51
+        }
+      }
+    ],
+    "worst_videos": [
+      {
+        "video_id": "5MnoPiSVc3M",
+        "title": "Cum au evoluat afacerile în județul Dâmbovița?",
+        "published_at": "2026-02-17T11:00:08Z",
+        "duration": "PT42S",
+        "metrics": {
+          "views": 307,
+          "likes": 0,
+          "comments": 0,
+          "engagement_rate": 0.0
+        }
+      },
+      {
+        "video_id": "8_f1cpLXTz4",
+        "title": "Dorin Ștefan, arhitect: Bucureștiul nu a fost un oraș fondat după reguli",
+        "published_at": "2026-02-14T08:30:08Z",
+        "duration": "PT22S",
+        "metrics": {
+          "views": 213,
+          "likes": 0,
+          "comments": 0,
+          "engagement_rate": 0.0
+        }
+      },
+      {
+        "video_id": "HB7F5e0yQ1Q",
+        "title": "Analiza sectorului bancar: ce fac BT, BRD și Erste?",
+        "published_at": "2026-02-18T14:00:26Z",
+        "duration": "PT1M1S",
+        "metrics": {
+          "views": 174,
+          "likes": 0,
+          "comments": 0,
+          "engagement_rate": 0.0
+        }
+      },
+      {
+        "video_id": "0gFzw-a35bU",
+        "title": "Dorin Ștefan, arhitect, profesor universitar și fondator al biroului de arhitectură DSBA",
+        "published_at": "2026-02-16T09:00:01Z",
+        "duration": "PT1M47S",
+        "metrics": {
+          "views": 95,
+          "likes": 0,
+          "comments": 0,
+          "engagement_rate": 0.0
+        }
+      },
+      {
+        "video_id": "Z6-AY37ZATQ",
+        "title": "Cum a început Construcții Erbașu?",
+        "published_at": "2026-02-14T08:30:19Z",
+        "duration": "PT31S",
+        "metrics": {
+          "views": 30,
+          "likes": 0,
+          "comments": 0,
+          "engagement_rate": 0.0
+        }
+      },
+      {
+        "video_id": "CC0b-6dSbK4",
+        "title": "Tacticile cu care să promovezi un startup",
+        "published_at": "2026-02-18T18:00:12Z",
+        "duration": "PT33S",
+        "metrics": {
+          "views": 22,
+          "likes": 0,
+          "comments": 0,
+          "engagement_rate": 0.0
+        }
+      },
+      {
+        "video_id": "MwtssPflZi0",
+        "title": "Prioritățile strategice ale Grupului BEI în zona de investiții",
+        "published_at": "2026-02-16T18:30:33Z",
+        "duration": "PT21S",
+        "metrics": {
+          "views": 18,
+          "likes": 0,
+          "comments": 0,
+          "engagement_rate": 0.0
+        }
+      },
+      {
+        "video_id": "uCp3WF1O_I8",
+        "title": "Cum arată investițiile din educație?",
+        "published_at": "2026-02-17T18:45:06Z",
+        "duration": "PT58S",
+        "metrics": {
+          "views": 16,
+          "likes": 0,
+          "comments": 0,
+          "engagement_rate": 0.0
+        }
+      },
+      {
+        "video_id": "JCF08Mwj_1I",
+        "title": "Ce lipsește Bucureștiului? Viziunea fondatorului biroului de arhitectură DSBA",
+        "published_at": "2026-02-13T13:00:41Z",
+        "duration": "PT30S",
+        "metrics": {
+          "views": 555,
+          "likes": 2,
+          "comments": 0,
+          "engagement_rate": 0.36
+        }
+      },
+      {
+        "video_id": "xoFMxaSBSkA",
+        "title": "Mediul de afaceri devine din ce în ce mai implicat în societate | Cristian Erbașu",
+        "published_at": "2026-02-17T16:01:27Z",
+        "duration": "PT34S",
+        "metrics": {
+          "views": 517,
+          "likes": 2,
+          "comments": 0,
+          "engagement_rate": 0.39
+        }
+      }
+    ],
+    "avg_metrics": {
+      "avg_views": 481.24,
+      "avg_engagement_rate": 1.5826000000000002,
+      "avg_likes": 8.84
+    }
+  },
+  "articles": {
+    "top_articles": [],
+    "worst_articles": [],
+    "avg_metrics": {}
+  },
+  "social_media": {},
+  "traffic_sources": {},
+  "insights": {
+    "what_works": [],
+    "what_doesnt_work": [],
+    "recommendations": []
+  }
+}
