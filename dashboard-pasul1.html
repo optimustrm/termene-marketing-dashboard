@@ -225,6 +225,24 @@
     </div>
     
     <script>
+        // Password protection
+        function checkPassword() {
+            const password = prompt('Introdu parola pentru acces:');
+            const correctHash = 'termene2026'; // Change this password
+            
+            if (password !== correctHash) {
+                alert('Parolă incorectă! Acces interzis.');
+                document.body.innerHTML = '<h1 style="text-align:center;margin-top:50px;">🔒 Acces Interzis</h1>';
+                return false;
+            }
+            return true;
+        }
+        
+        // Check password on load
+        if (!checkPassword()) {
+            throw new Error('Unauthorized access');
+        }
+        
         // Load data
         fetch('output/pasul1-social-content.json')
             .then(response => response.json())
