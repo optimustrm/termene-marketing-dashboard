@@ -1,0 +1,55 @@
+{
+  "what_works": [
+    {
+      "finding": "Cuvinte cheie în titluri performante: prima, rundă, marius",
+      "data": "Top 25% videos au în medie 654 views (vs media 370)",
+      "type": "title_analysis"
+    }
+  ],
+  "what_doesnt_work": [
+    {
+      "finding": "Video-uri cu engagement sub 1% necesită optimizare",
+      "data": "Bottom 25%: 277 views, 0.30% engagement",
+      "type": "performance_analysis"
+    },
+    {
+      "finding": "8 video-uri au multe views dar engagement scăzut",
+      "data": "Views peste medie dar engagement sub 2.12%",
+      "type": "engagement_quality"
+    }
+  ],
+  "recommendations": [
+    {
+      "priority": "high",
+      "action": "Produce mai multe interviuri long-form (60-90 min)",
+      "reasoning": "Long-form videos au cu 97% mai mult engagement decât media",
+      "expected_impact": "Creștere engagement rate și watch time"
+    },
+    {
+      "priority": "medium",
+      "action": "Revizuire 6 video-uri cu engagement sub 0.30%",
+      "reasoning": "Identifică pattern-uri comune în conținut slab performant (thumbnail, titlu, primele 30s)",
+      "expected_impact": "Îmbunătățire 20-30% engagement prin optimizare"
+    },
+    {
+      "priority": "high",
+      "action": "Optimizare CTA și engagement hooks în video-uri populare",
+      "reasoning": "8 video-uri au views mari dar engagement scăzut - potențial neexploatat",
+      "expected_impact": "Conversie views în likes/comments/shares"
+    }
+  ],
+  "data_points": {
+    "avg_views": 370.0,
+    "avg_engagement_rate": 2.12,
+    "median_views": 272,
+    "total_videos": 25,
+    "top_video_views": 2019,
+    "worst_video_views": 16,
+    "trend_7d": {
+      "direction": "creștere",
+      "change_percent": 80.4,
+      "recent_engagement": 2.47,
+      "previous_engagement": 1.37
+    }
+  }
+}

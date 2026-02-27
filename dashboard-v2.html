@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing Intelligence Dashboard - Termene.ro</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #2c3e50;
+        }
+        
+        .container { max-width: 1600px; margin: 0 auto; padding: 20px; }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+        }
+        
+        header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        header p { opacity: 0.9; font-size: 1.1rem; }
+        
+        .date-range-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .date-range-selector label {
+            font-weight: 600;
+            margin-right: 10px;
+        }
+        
+        .date-btn {
+            padding: 12px 24px;
+            background: white;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .date-btn:hover { border-color: #667eea; color: #667eea; }
+        .date-btn.active { background: #667eea; color: white; border-color: #667eea; }
+        
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-tab {
+            padding: 12px 24px;
+            background: white;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        
+        .nav-tab:hover { border-color: #667eea; color: #667eea; }
+        .nav-tab.active { background: #667eea; color: white; border-color: #667eea; }
+        
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .kpi-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            border-left: 4px solid #667eea;
+        }
+        
+        .kpi-card.success { border-left-color: #2ecc71; }
+        .kpi-card.warning { border-left-color: #f39c12; }
+        .kpi-card.danger { border-left-color: #e74c3c; }
+        
+        .kpi-label { font-size: 0.85rem; color: #7f8c8d; text-transform: uppercase; margin-bottom: 8px; }
+        .kpi-value { font-size: 2.2rem; font-weight: bold; color: #2c3e50; margin-bottom: 5px; }
+        .kpi-change { font-size: 0.9rem; }
+        .kpi-change.positive { color: #27ae60; }
+        .kpi-change.negative { color: #e74c3c; }
+        
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        tr:hover { background: #f8f9fa; }
+        
+        .insights-card {
+            padding: 20px;
+            margin-bottom: 15px;
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            border-radius: 8px;
+        }
+        
+        .insights-card.success { border-left-color: #2ecc71; background: #d4edda; }
+        .insights-card.warning { border-left-color: #f39c12; background: #fff3cd; }
+        .insights-card.danger { border-left-color: #e74c3c; background: #f8d7da; }
+        
+        .insights-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .insights-card p {
+            color: #495057;
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        
+        .insights-card .data {
+            font-size: 0.9rem;
+            color: #6c757d;
+            font-style: italic;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .badge-high { background: #e74c3c; color: white; }
+        .badge-medium { background: #f39c12; color: white; }
+        .badge-low { background: #95a5a6; color: white; }
+        .badge-success { background: #d4edda; color: #155724; }
+        .badge-warning { background: #fff3cd; color: #856404; }
+        .badge-danger { background: #f8d7da; color: #721c24; }
+        
+        .chart-container {
+            margin-top: 20px;
+            padding: 20px;
+            background: #fafafa;
+            border-radius: 10px;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #7f8c8d;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.8rem; }
+            .kpi-value { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 Marketing Intelligence Dashboard</h1>
+            <p>Termene.ro - Data-Driven Content & Marketing Analytics</p>
+            <p style="margin-top: 10px; opacity: 0.8;">Updated: <span id="lastUpdate">Loading...</span></p>
+        </header>
+        
+        <div class="date-range-selector">
+            <label>📅 Perioadă:</label>
+            <button class="date-btn" onclick="changePeriod(1)">1 Zi</button>
+            <button class="date-btn" onclick="changePeriod(7)">7 Zile</button>
+            <button class="date-btn active" onclick="changePeriod(30)">30 Zile</button>
+            <button class="date-btn" onclick="changePeriod(90)">90 Zile</button>
+            <button class="date-btn" onclick="changePeriod(365)">1 An</button>
+            <span id="periodLabel" style="margin-left: 20px; font-weight: 600; color: #667eea;">Perioada selectată: 30 zile</span>
+        </div>
+        
+        <div class="nav-tabs">
+            <div class="nav-tab active" onclick="showTab('overview')">📈 Overview</div>
+            <div class="nav-tab" onclick="showTab('youtube')">🎥 YouTube Deep Dive</div>
+            <div class="nav-tab" onclick="showTab('insights')">💡 Insights Bazate pe Date</div>
+        </div>
+        
+        <!-- OVERVIEW TAB -->
+        <div id="overview" class="tab-content active">
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-label">Total Videouri</div>
+                    <div class="kpi-value" id="totalVideos">-</div>
+                    <div class="kpi-change" id="videosTrend">Loading...</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Total Views</div>
+                    <div class="kpi-value" id="totalViews">-</div>
+                    <div class="kpi-change" id="viewsTrend">Medie/video</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Avg Engagement Rate</div>
+                    <div class="kpi-value" id="avgEngagement">-</div>
+                    <div class="kpi-change" id="engagementTrend">Target: &gt;2.5%</div>
+                </div>
+                <div class="kpi-card success">
+                    <div class="kpi-label">Best Video Views</div>
+                    <div class="kpi-value" id="bestVideo">-</div>
+                    <div class="kpi-change">Top performer</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">🏆 Top 10 Performing Videos</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Title</th>
+                            <th>Views</th>
+                            <th>Engagement</th>
+                            <th>Published</th>
+                        </tr>
+                    </thead>
+                    <tbody id="topVideosTable">
+                        <tr><td colspan="5" class="loading">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- YOUTUBE TAB -->
+        <div id="youtube" class="tab-content">
+            <div class="section">
+                <h2 class="section-title">🎥 Video Performance Analysis</h2>
+                <div class="chart-container">
+                    <canvas id="performanceChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">⚠️ Videos Needing Attention</h2>
+                <p style="margin-bottom: 15px; color: #7f8c8d;">Video-uri cu engagement sub media care necesită optimizare</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Views</th>
+                            <th>Engagement</th>
+                            <th>Problema</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lowPerformersTable">
+                        <tr><td colspan="4" class="loading">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- INSIGHTS TAB -->
+        <div id="insights" class="tab-content">
+            <div class="section">
+                <h2 class="section-title">✅ Ce Funcționează (Bazat pe Date)</h2>
+                <div id="whatWorksContainer">
+                    <p class="loading">Loading insights...</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">⚠️ Ce NU Funcționează (Necesită Atenție)</h2>
+                <div id="whatDoesntWorkContainer">
+                    <p class="loading">Loading insights...</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">💡 Recomandări Acționabile</h2>
+                <p style="margin-bottom: 20px; color: #7f8c8d;">Recomandări prioritizate bazate pe analiza datelor reale</p>
+                <div id="recommendationsContainer">
+                    <p class="loading">Loading recommendations...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let currentPeriod = 30;
+        let performanceChart = null;
+        
+        function changePeriod(days) {
+            currentPeriod = days;
+            document.querySelectorAll('.date-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById('periodLabel').textContent = `Perioada selectată: ${days} ${days === 1 ? 'zi' : days === 365 ? 'an' : 'zile'}`;
+            loadData(days);
+        }
+        
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        function loadData(days) {
+            Promise.all([
+                fetch(`output/youtube-${days}d.json`).then(r => r.json()),
+                fetch(`output/insights-${days}d.json`).then(r => r.json())
+            ]).then(([ytData, insights]) => {
+                updateKPIs(ytData, insights);
+                updateTables(ytData);
+                updateInsights(insights);
+                updateCharts(ytData);
+                document.getElementById('lastUpdate').textContent = new Date(ytData.timestamp).toLocaleString('ro-RO');
+            }).catch(err => {
+                console.error('Error loading data:', err);
+                alert('Eroare la încărcarea datelor pentru perioada selectată');
+            });
+        }
+        
+        function updateKPIs(ytData, insights) {
+            const videos = ytData.videos;
+            const totalViews = videos.reduce((sum, v) => sum + v.metrics.views, 0);
+            const avgEngagement = insights.data_points?.avg_engagement_rate || 0;
+            const avgViews = insights.data_points?.avg_views || 0;
+            
+            document.getElementById('totalVideos').textContent = videos.length;
+            document.getElementById('totalViews').textContent = totalViews.toLocaleString('ro-RO');
+            document.getElementById('avgEngagement').textContent = avgEngagement.toFixed(2) + '%';
+            document.getElementById('bestVideo').textContent = insights.data_points?.top_video_views?.toLocaleString('ro-RO') || '-';
+            
+            document.getElementById('videosTrend').textContent = `În ultimele ${currentPeriod} zile`;
+            document.getElementById('viewsTrend').textContent = `${avgViews.toLocaleString('ro-RO')} medie/video`;
+            
+            const engTrendEl = document.getElementById('engagementTrend');
+            if (avgEngagement > 2.5) {
+                engTrendEl.textContent = '✅ Excellent!';
+                engTrendEl.className = 'kpi-change positive';
+            } else if (avgEngagement > 1.5) {
+                engTrendEl.textContent = '⚠️ Good, can improve';
+                engTrendEl.className = 'kpi-change';
+            } else {
+                engTrendEl.textContent = '❌ Needs improvement';
+                engTrendEl.className = 'kpi-change negative';
+            }
+        }
+        
+        function updateTables(ytData) {
+            const videos = ytData.videos;
+            
+            // Top performers
+            const topHtml = videos.slice(0, 10).map((v, i) => `
+                <tr>
+                    <td><strong>${i + 1}</strong></td>
+                    <td><a href="https://youtube.com/watch?v=${v.video_id}" target="_blank">${v.title}</a></td>
+                    <td><strong>${v.metrics.views.toLocaleString('ro-RO')}</strong></td>
+                    <td><span class="badge ${v.metrics.engagement_rate > 3 ? 'badge-success' : v.metrics.engagement_rate > 1.5 ? 'badge-warning' : 'badge-danger'}">${v.metrics.engagement_rate.toFixed(2)}%</span></td>
+                    <td>${new Date(v.published_at).toLocaleDateString('ro-RO')}</td>
+                </tr>
+            `).join('');
+            document.getElementById('topVideosTable').innerHTML = topHtml;
+            
+            // Low performers
+            const sorted = [...videos].sort((a, b) => a.metrics.engagement_rate - b.metrics.engagement_rate);
+            const lowHtml = sorted.slice(0, 10).map(v => {
+                let problem = v.metrics.engagement_rate < 0.5 ? 'Engagement critic de scăzut' :
+                             v.metrics.views < 100 ? 'Views foarte mici' :
+                             'Optimizare thumbnail/titlu necesară';
+                return `
+                    <tr>
+                        <td><a href="https://youtube.com/watch?v=${v.video_id}" target="_blank">${v.title}</a></td>
+                        <td>${v.metrics.views.toLocaleString('ro-RO')}</td>
+                        <td><span class="badge badge-danger">${v.metrics.engagement_rate.toFixed(2)}%</span></td>
+                        <td>${problem}</td>
+                    </tr>
+                `;
+            }).join('');
+            document.getElementById('lowPerformersTable').innerHTML = lowHtml;
+        }
+        
+        function updateInsights(insights) {
+            // What works
+            const worksHtml = insights.what_works?.map(item => `
+                <div class="insights-card success">
+                    <h4>✅ ${item.finding}</h4>
+                    <p class="data">📊 ${item.data}</p>
+                </div>
+            `).join('') || '<p>No data available</p>';
+            document.getElementById('whatWorksContainer').innerHTML = worksHtml;
+            
+            // What doesn't work
+            const doesntWorkHtml = insights.what_doesnt_work?.map(item => `
+                <div class="insights-card warning">
+                    <h4>⚠️ ${item.finding}</h4>
+                    <p class="data">📊 ${item.data}</p>
+                </div>
+            `).join('') || '<p>No data available</p>';
+            document.getElementById('whatDoesntWorkContainer').innerHTML = doesntWorkHtml;
+            
+            // Recommendations
+            const recsHtml = insights.recommendations?.map(rec => {
+                const badgeClass = rec.priority === 'high' ? 'badge-high' : rec.priority === 'medium' ? 'badge-medium' : 'badge-low';
+                return `
+                    <div class="insights-card">
+                        <h4><span class="badge ${badgeClass}">${rec.priority.toUpperCase()}</span> ${rec.action}</h4>
+                        <p><strong>De ce:</strong> ${rec.reasoning}</p>
+                        <p><strong>Impact așteptat:</strong> ${rec.expected_impact}</p>
+                    </div>
+                `;
+            }).join('') || '<p>No recommendations available</p>';
+            document.getElementById('recommendationsContainer').innerHTML = recsHtml;
+        }
+        
+        function updateCharts(ytData) {
+            const ctx = document.getElementById('performanceChart').getContext('2d');
+            
+            if (performanceChart) {
+                performanceChart.destroy();
+            }
+            
+            performanceChart = new Chart(ctx, {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        label: 'Video Performance',
+                        data: ytData.videos.map(v => ({
+                            x: v.metrics.views,
+                            y: v.metrics.engagement_rate
+                        })),
+                        backgroundColor: 'rgba(102, 126, 234, 0.5)',
+                        borderColor: 'rgb(102, 126, 234)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Views vs Engagement Rate'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `Views: ${context.parsed.x.toLocaleString()}, Engagement: ${context.parsed.y.toFixed(2)}%`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: { display: true, text: 'Views' },
+                            type: 'logarithmic'
+                        },
+                        y: {
+                            title: { display: true, text: 'Engagement Rate (%)' },
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Load default period (30 days)
+        loadData(30);
+    </script>
+</body>
+</html>

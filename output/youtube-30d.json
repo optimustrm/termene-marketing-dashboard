@@ -1,0 +1,612 @@
+{
+  "channel_id": "UC_y6JPOGrftHSNnU9VPcXXQ",
+  "timestamp": "2026-02-27T09:11:39.763150Z",
+  "filter": {
+    "days": 30,
+    "all": false,
+    "limit": 50
+  },
+  "video_count": 50,
+  "videos": [
+    {
+      "video_id": "zELTbT258s8",
+      "title": "Cristian Erba\u0219u: \u201eSuntem la maxim din toate punctele de vedere\u201d | A fost odat\u0103 \u00een business",
+      "published_at": "2026-02-13T16:00:06Z",
+      "duration": "PT1H5M31S",
+      "metrics": {
+        "views": 5884,
+        "likes": 123,
+        "comments": 7,
+        "engagement_rate": 2.21
+      }
+    },
+    {
+      "video_id": "fhNrXB2sW0s",
+      "title": "Unde investim \u00een 2026? | Mihai Constantinescu (Amundi AM) | Cu cifrele pe mas\u0103",
+      "published_at": "2026-02-23T07:00:29Z",
+      "duration": "PT56M36S",
+      "metrics": {
+        "views": 2019,
+        "likes": 69,
+        "comments": 9,
+        "engagement_rate": 3.86
+      }
+    },
+    {
+      "video_id": "XsczWLXKkbc",
+      "title": "Unde investe\u0219ti 1 miliard de euro? | Sorin Preda, Global Vision | A fost odat\u0103 \u00een business",
+      "published_at": "2026-02-20T15:01:02Z",
+      "duration": "PT1H46S",
+      "metrics": {
+        "views": 1104,
+        "likes": 40,
+        "comments": 6,
+        "engagement_rate": 4.17
+      }
+    },
+    {
+      "video_id": "1awAFHobjgs",
+      "title": "Compania Erba\u0219u a ajuns la 3600 de angaja\u021bi \u0219i 3 miliarde cifr\u0103 de afaceri",
+      "published_at": "2026-02-14T13:15:00Z",
+      "duration": "PT27S",
+      "metrics": {
+        "views": 1019,
+        "likes": 6,
+        "comments": 0,
+        "engagement_rate": 0.59
+      }
+    },
+    {
+      "video_id": "6jyKzzLGWco",
+      "title": "Cristian Erba\u0219u spune povestea companiei de construc\u021bii la \u201dA fost odat\u0103 \u00een business\u201d",
+      "published_at": "2026-02-16T18:00:06Z",
+      "duration": "PT37S",
+      "metrics": {
+        "views": 843,
+        "likes": 16,
+        "comments": 0,
+        "engagement_rate": 1.9
+      }
+    },
+    {
+      "video_id": "k8B4rL8gQiM",
+      "title": "Schimbarea decisiv\u0103 de pe pia\u021ba de construc\u021bii din Rom\u00e2nia",
+      "published_at": "2026-02-15T12:45:09Z",
+      "duration": "PT46S",
+      "metrics": {
+        "views": 774,
+        "likes": 10,
+        "comments": 0,
+        "engagement_rate": 1.29
+      }
+    },
+    {
+      "video_id": "Kpf_j41pztM",
+      "title": "Sorin Preda (Global Vision), la emisiunea \u201eA fost odat\u0103 \u00een business",
+      "published_at": "2026-02-20T16:06:46Z",
+      "duration": "PT47S",
+      "metrics": {
+        "views": 726,
+        "likes": 3,
+        "comments": 1,
+        "engagement_rate": 0.55
+      }
+    },
+    {
+      "video_id": "ixIz3rlkRgA",
+      "title": "Genera\u021bia Connex: cum s-au format managerii de ast\u0103zi din Rom\u00e2nia.",
+      "published_at": "2026-02-21T07:00:37Z",
+      "duration": "PT49S",
+      "metrics": {
+        "views": 692,
+        "likes": 14,
+        "comments": 1,
+        "engagement_rate": 2.17
+      }
+    },
+    {
+      "video_id": "dw-fxO1PTIE",
+      "title": "Ce contracte a c\u00e2\u0219tigat Construc\u021bii Erba\u0219u?",
+      "published_at": "2026-02-15T17:15:03Z",
+      "duration": "PT42S",
+      "metrics": {
+        "views": 610,
+        "likes": 7,
+        "comments": 0,
+        "engagement_rate": 1.15
+      }
+    },
+    {
+      "video_id": "anyCO9EX1-Y",
+      "title": "Cele doua op\u021biuni pe care le are un startup din Rom\u00e2nia",
+      "published_at": "2026-02-18T19:00:02Z",
+      "duration": "PT22S",
+      "metrics": {
+        "views": 584,
+        "likes": 3,
+        "comments": 0,
+        "engagement_rate": 0.51
+      }
+    },
+    {
+      "video_id": "AQOIwajW9WE",
+      "title": "Cum func\u021bioneaz\u0103 finan\u021b\u0103rile? Explic\u0103 expertul BEI, Marius Cara",
+      "published_at": "2026-02-17T07:30:05Z",
+      "duration": "PT43S",
+      "metrics": {
+        "views": 555,
+        "likes": 4,
+        "comments": 0,
+        "engagement_rate": 0.72
+      }
+    },
+    {
+      "video_id": "JCF08Mwj_1I",
+      "title": "Ce lipse\u0219te Bucure\u0219tiului? Viziunea fondatorului biroului de arhitectur\u0103 DSBA",
+      "published_at": "2026-02-13T13:00:41Z",
+      "duration": "PT30S",
+      "metrics": {
+        "views": 555,
+        "likes": 2,
+        "comments": 0,
+        "engagement_rate": 0.36
+      }
+    },
+    {
+      "video_id": "KOpLInvfe5s",
+      "title": "Principala diferen\u021b\u0103 dintre Rom\u00e2nia \u0219i \u021b\u0103rile din vest",
+      "published_at": "2026-02-17T13:00:35Z",
+      "duration": "PT36S",
+      "metrics": {
+        "views": 542,
+        "likes": 5,
+        "comments": 0,
+        "engagement_rate": 0.92
+      }
+    },
+    {
+      "video_id": "nZc2J0RaZFk",
+      "title": "Pe ce investi\u021bii mizeaz\u0103 UE \u00een Rom\u00e2nia? | Marius Cara (Grupul BEI) | Cu cifrele pe mas\u0103",
+      "published_at": "2026-02-16T07:00:26Z",
+      "duration": "PT44M58S",
+      "metrics": {
+        "views": 520,
+        "likes": 12,
+        "comments": 0,
+        "engagement_rate": 2.31
+      }
+    },
+    {
+      "video_id": "xoFMxaSBSkA",
+      "title": "Mediul de afaceri devine din ce \u00een ce mai implicat \u00een societate | Cristian Erba\u0219u",
+      "published_at": "2026-02-17T16:01:27Z",
+      "duration": "PT34S",
+      "metrics": {
+        "views": 517,
+        "likes": 2,
+        "comments": 0,
+        "engagement_rate": 0.39
+      }
+    },
+    {
+      "video_id": "Uz7w7-fVubs",
+      "title": "Cristian Erba\u0219u: Avem \u0219antiere \u00een 28 de jude\u021be",
+      "published_at": "2026-02-15T15:30:30Z",
+      "duration": "PT28S",
+      "metrics": {
+        "views": 411,
+        "likes": 8,
+        "comments": 0,
+        "engagement_rate": 1.95
+      }
+    },
+    {
+      "video_id": "2yCSXyl0Pl0",
+      "title": "Florin Tufan, Veridion: S\u0103 ai \u00eencredere \u00een ce g\u00e2nde\u0219ti, chiar dac\u0103 e gre\u0219it | Prima rund\u0103",
+      "published_at": "2026-02-18T10:01:17Z",
+      "duration": "PT41M11S",
+      "metrics": {
+        "views": 385,
+        "likes": 21,
+        "comments": 1,
+        "engagement_rate": 5.71
+      }
+    },
+    {
+      "video_id": "7sB4lVQvRPE",
+      "title": "Sfaturi pentru startup-uri la \u00eenceput de drum",
+      "published_at": "2026-02-19T17:15:00Z",
+      "duration": "PT29S",
+      "metrics": {
+        "views": 384,
+        "likes": 8,
+        "comments": 0,
+        "engagement_rate": 2.08
+      }
+    },
+    {
+      "video_id": "sSdsn0Kopb0",
+      "title": "Povestea lui Cristian Erba\u0219u | A fost odat\u0103 \u00een business",
+      "published_at": "2026-02-13T18:15:06Z",
+      "duration": "PT47S",
+      "metrics": {
+        "views": 377,
+        "likes": 2,
+        "comments": 0,
+        "engagement_rate": 0.53
+      }
+    },
+    {
+      "video_id": "QoN3T2EJeW4",
+      "title": "Viitorul dolarului \u0219i pre\u021bul aurului. Analiz\u0103 economic\u0103 detaliat\u0103.",
+      "published_at": "2026-02-23T10:00:38Z",
+      "duration": "PT49S",
+      "metrics": {
+        "views": 358,
+        "likes": 5,
+        "comments": 0,
+        "engagement_rate": 1.4
+      }
+    },
+    {
+      "video_id": "tLrgrYOswcQ",
+      "title": "2026 va fi un an de repozi\u021bionare \u00een imobiliare",
+      "published_at": "2026-02-17T14:01:30Z",
+      "duration": "PT1M4S",
+      "metrics": {
+        "views": 351,
+        "likes": 5,
+        "comments": 0,
+        "engagement_rate": 1.42
+      }
+    },
+    {
+      "video_id": "9jCFRd9riSo",
+      "title": "Previziunile pentru pia\u021ba de birouri din Bucure\u0219ti",
+      "published_at": "2026-02-19T11:00:16Z",
+      "duration": "PT42S",
+      "metrics": {
+        "views": 318,
+        "likes": 3,
+        "comments": 0,
+        "engagement_rate": 0.94
+      }
+    },
+    {
+      "video_id": "9NLPdOGefPU",
+      "title": "Ce alegeri are Cristian Erba\u0219u. Quiz rapid",
+      "published_at": "2026-02-17T17:30:02Z",
+      "duration": "PT58S",
+      "metrics": {
+        "views": 313,
+        "likes": 4,
+        "comments": 0,
+        "engagement_rate": 1.28
+      }
+    },
+    {
+      "video_id": "5MnoPiSVc3M",
+      "title": "Cum au evoluat afacerile \u00een jude\u021bul D\u00e2mbovi\u021ba?",
+      "published_at": "2026-02-17T11:00:08Z",
+      "duration": "PT42S",
+      "metrics": {
+        "views": 307,
+        "likes": 0,
+        "comments": 0,
+        "engagement_rate": 0.0
+      }
+    },
+    {
+      "video_id": "qYhvkqM_EhE",
+      "title": "Care e cel mai mare risc pentru b\u0103ncile rom\u00e2ne\u0219ti?",
+      "published_at": "2026-02-20T14:01:30Z",
+      "duration": "PT45S",
+      "metrics": {
+        "views": 297,
+        "likes": 4,
+        "comments": 0,
+        "engagement_rate": 1.35
+      }
+    },
+    {
+      "video_id": "ohVVTPeXeRc",
+      "title": "2026: Anul \u201edezordinii controlate\u201d \u00een economie. Cum navig\u0103m riscul?",
+      "published_at": "2026-02-23T09:01:11Z",
+      "duration": "PT41S",
+      "metrics": {
+        "views": 293,
+        "likes": 6,
+        "comments": 0,
+        "engagement_rate": 2.05
+      }
+    },
+    {
+      "video_id": "QrVrICLOYXs",
+      "title": "De la huil\u0103 la medicamente. Jude\u021bul cu cea mai diversificat\u0103 economie",
+      "published_at": "2026-02-20T11:00:48Z",
+      "duration": "PT42S",
+      "metrics": {
+        "views": 275,
+        "likes": 5,
+        "comments": 0,
+        "engagement_rate": 1.82
+      }
+    },
+    {
+      "video_id": "6YV1Y_m-BxM",
+      "title": "Previziuni economice 2026: Cum vor evolua SUA, Europa \u0219i pie\u021bele emergente?",
+      "published_at": "2026-02-23T11:00:10Z",
+      "duration": "PT1M3S",
+      "metrics": {
+        "views": 272,
+        "likes": 5,
+        "comments": 0,
+        "engagement_rate": 1.84
+      }
+    },
+    {
+      "video_id": "Wn5D0JHvFc4",
+      "title": "Marius Istrate, TechAngels: Apar startup-uri care rezolv\u0103 probleme reale, foarte grele | Prima rund\u0103",
+      "published_at": "2026-02-25T11:00:54Z",
+      "duration": "PT44M44S",
+      "metrics": {
+        "views": 252,
+        "likes": 16,
+        "comments": 0,
+        "engagement_rate": 6.35
+      }
+    },
+    {
+      "video_id": "JI8NCEzEeM0",
+      "title": "Investi\u021biile din 2025 ale B\u0103ncii Europene de Investi\u021bii | Cu cifrele pe mas\u0103",
+      "published_at": "2026-02-16T07:36:31Z",
+      "duration": "PT1M",
+      "metrics": {
+        "views": 237,
+        "likes": 2,
+        "comments": 0,
+        "engagement_rate": 0.84
+      }
+    },
+    {
+      "video_id": "8_f1cpLXTz4",
+      "title": "Dorin S\u0326tefan, arhitect: Bucure\u0219tiul nu a fost un ora\u0219 fondat dup\u0103 reguli",
+      "published_at": "2026-02-14T08:30:08Z",
+      "duration": "PT22S",
+      "metrics": {
+        "views": 213,
+        "likes": 0,
+        "comments": 0,
+        "engagement_rate": 0.0
+      }
+    },
+    {
+      "video_id": "sJLuPza6dzE",
+      "title": "Ce abilitate subestimat\u0103 trebuie s\u0103 aib\u0103 un fondator?!",
+      "published_at": "2026-02-19T13:01:39Z",
+      "duration": "PT30S",
+      "metrics": {
+        "views": 200,
+        "likes": 5,
+        "comments": 0,
+        "engagement_rate": 2.5
+      }
+    },
+    {
+      "video_id": "D3TTzRxrI4I",
+      "title": "Florin Tufan, CEO Veridion: Exist\u0103 o etic\u0103 a muncii care e spectaculoas\u0103 la noi",
+      "published_at": "2026-02-19T15:15:07Z",
+      "duration": "PT36S",
+      "metrics": {
+        "views": 188,
+        "likes": 4,
+        "comments": 0,
+        "engagement_rate": 2.13
+      }
+    },
+    {
+      "video_id": "JLe57BVhwKg",
+      "title": "Ce se \u00eent\u00e2mpl\u0103 cu Complexul Energetic Oltenia?",
+      "published_at": "2026-02-16T11:00:34Z",
+      "duration": "PT33S",
+      "metrics": {
+        "views": 184,
+        "likes": 1,
+        "comments": 1,
+        "engagement_rate": 1.09
+      }
+    },
+    {
+      "video_id": "HB7F5e0yQ1Q",
+      "title": "Analiza sectorului bancar: ce fac BT, BRD \u0219i Erste?",
+      "published_at": "2026-02-18T14:00:26Z",
+      "duration": "PT1M1S",
+      "metrics": {
+        "views": 174,
+        "likes": 0,
+        "comments": 0,
+        "engagement_rate": 0.0
+      }
+    },
+    {
+      "video_id": "Z2AafiMEHJo",
+      "title": "Cum se construie\u0219te un startup?",
+      "published_at": "2026-02-18T16:00:48Z",
+      "duration": "PT48S",
+      "metrics": {
+        "views": 157,
+        "likes": 2,
+        "comments": 0,
+        "engagement_rate": 1.27
+      }
+    },
+    {
+      "video_id": "opbN7hq3fjg",
+      "title": "Rom\u00e2nia este cel mai mare beneficiar al Grupului BEI",
+      "published_at": "2026-02-17T09:01:09Z",
+      "duration": "PT45S",
+      "metrics": {
+        "views": 153,
+        "likes": 2,
+        "comments": 0,
+        "engagement_rate": 1.31
+      }
+    },
+    {
+      "video_id": "p64NQqmCICw",
+      "title": "Cum arat\u0103 ecosistemul de startup-uri din Rom\u00e2nia?",
+      "published_at": "2026-02-19T09:01:09Z",
+      "duration": "PT26S",
+      "metrics": {
+        "views": 145,
+        "likes": 4,
+        "comments": 0,
+        "engagement_rate": 2.76
+      }
+    },
+    {
+      "video_id": "m4iyz71H1SU",
+      "title": "Locuri de munc\u0103 \u00een jude\u021bul Br\u0103ila",
+      "published_at": "2026-02-18T11:01:23Z",
+      "duration": "PT39S",
+      "metrics": {
+        "views": 138,
+        "likes": 1,
+        "comments": 0,
+        "engagement_rate": 0.72
+      }
+    },
+    {
+      "video_id": "9yyWJhmDtV0",
+      "title": "Cum se vor schimba banii p\u00e2n\u0103 \u00een 2030?",
+      "published_at": "2026-02-19T14:00:16Z",
+      "duration": "PT58S",
+      "metrics": {
+        "views": 131,
+        "likes": 5,
+        "comments": 0,
+        "engagement_rate": 3.82
+      }
+    },
+    {
+      "video_id": "icqyp9wXX7I",
+      "title": "Tranzac\u021biile cu terenuri \u00een Bucure\u0219ti, la cel mai slab nivel din ultimii 7 ani",
+      "published_at": "2026-02-13T14:01:13Z",
+      "duration": "PT1M13S",
+      "metrics": {
+        "views": 118,
+        "likes": 3,
+        "comments": 0,
+        "engagement_rate": 2.54
+      }
+    },
+    {
+      "video_id": "XWDU6g-54AY",
+      "title": "Top 10 Companii Profitabile din Teleorman \ud83d\ude80 Cre\u0219tere 155%",
+      "published_at": "2026-02-26T16:40:32Z",
+      "duration": "PT37S",
+      "metrics": {
+        "views": 96,
+        "likes": 2,
+        "comments": 0,
+        "engagement_rate": 2.08
+      }
+    },
+    {
+      "video_id": "0gFzw-a35bU",
+      "title": "Dorin \u0218tefan, arhitect, profesor universitar \u0219i fondator al biroului de arhitectur\u0103 DSBA",
+      "published_at": "2026-02-16T09:00:01Z",
+      "duration": "PT1M47S",
+      "metrics": {
+        "views": 95,
+        "likes": 0,
+        "comments": 0,
+        "engagement_rate": 0.0
+      }
+    },
+    {
+      "video_id": "KQhXqCGRsa8",
+      "title": "Rom\u00e2nia este tot mai departe de zona EURO",
+      "published_at": "2026-02-16T14:00:36Z",
+      "duration": "PT38S",
+      "metrics": {
+        "views": 94,
+        "likes": 1,
+        "comments": 0,
+        "engagement_rate": 1.06
+      }
+    },
+    {
+      "video_id": "haQj6Ile4sw",
+      "title": "Planurile Construc\u021bii Erba\u0219u \u00een zona agricol\u0103",
+      "published_at": "2026-02-16T10:01:03Z",
+      "duration": "PT40S",
+      "metrics": {
+        "views": 89,
+        "likes": 2,
+        "comments": 0,
+        "engagement_rate": 2.25
+      }
+    },
+    {
+      "video_id": "5fmMglosgb0",
+      "title": "\u00cenceputurile \u00een imobiliare: 9 luni f\u0103r\u0103 contracte",
+      "published_at": "2026-02-22T07:00:04Z",
+      "duration": "PT59S",
+      "metrics": {
+        "views": 34,
+        "likes": 0,
+        "comments": 1,
+        "engagement_rate": 2.94
+      }
+    },
+    {
+      "video_id": "Z6-AY37ZATQ",
+      "title": "Cum a \u00eenceput Construc\u021bii Erba\u0219u?",
+      "published_at": "2026-02-14T08:30:19Z",
+      "duration": "PT31S",
+      "metrics": {
+        "views": 30,
+        "likes": 0,
+        "comments": 0,
+        "engagement_rate": 0.0
+      }
+    },
+    {
+      "video_id": "CC0b-6dSbK4",
+      "title": "Tacticile cu care s\u0103 promovezi un startup",
+      "published_at": "2026-02-18T18:00:12Z",
+      "duration": "PT33S",
+      "metrics": {
+        "views": 22,
+        "likes": 0,
+        "comments": 0,
+        "engagement_rate": 0.0
+      }
+    },
+    {
+      "video_id": "MwtssPflZi0",
+      "title": "Priorit\u0103\u021bile strategice ale Grupului BEI \u00een zona de investi\u021bii",
+      "published_at": "2026-02-16T18:30:33Z",
+      "duration": "PT21S",
+      "metrics": {
+        "views": 18,
+        "likes": 0,
+        "comments": 0,
+        "engagement_rate": 0.0
+      }
+    },
+    {
+      "video_id": "uCp3WF1O_I8",
+      "title": "Cum arat\u0103 investi\u021biile din educa\u021bie?",
+      "published_at": "2026-02-17T18:45:06Z",
+      "duration": "PT58S",
+      "metrics": {
+        "views": 16,
+        "likes": 0,
+        "comments": 0,
+        "engagement_rate": 0.0
+      }
+    }
+  ]
+}

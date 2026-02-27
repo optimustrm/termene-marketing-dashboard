@@ -1,0 +1,20 @@
+{
+  "what_works": [],
+  "what_doesnt_work": [],
+  "recommendations": [
+    {
+      "priority": "medium",
+      "action": "Creștere frecvență postări (target: 3-4 videouri/săptămână)",
+      "reasoning": "Doar 1 videouri în ultima lună - algoritmul YouTube favorizează consistența",
+      "expected_impact": "Creștere reach organic cu 40-60%"
+    }
+  ],
+  "data_points": {
+    "avg_views": 96,
+    "avg_engagement_rate": 2.08,
+    "median_views": 96,
+    "total_videos": 1,
+    "top_video_views": 96,
+    "worst_video_views": 96
+  }
+}

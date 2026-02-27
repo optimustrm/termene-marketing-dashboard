@@ -1,0 +1,72 @@
+{
+  "products": [
+    {
+      "id": "verifica-firme-ro",
+      "name": "Verifică Firme - România",
+      "category": "company_verification",
+      "url_pattern": "/verifica-firme-romania*",
+      "ga4_path_filter": "pagePath=~/verifica.*romania"
+    },
+    {
+      "id": "verifica-firme-int",
+      "name": "Verifică Firme - Internațional",
+      "category": "company_verification",
+      "url_pattern": "/verifica-firme-international*",
+      "ga4_path_filter": "pagePath=~/verifica.*international"
+    },
+    {
+      "id": "redbill",
+      "name": "RedBill",
+      "category": "tools",
+      "url_pattern": "/redbill*",
+      "ga4_path_filter": "pagePath=~/redbill"
+    },
+    {
+      "id": "dosare-instanta",
+      "name": "Dosare Instanță",
+      "category": "tools",
+      "url_pattern": "/dosare-instanta*",
+      "ga4_path_filter": "pagePath=~/dosare"
+    },
+    {
+      "id": "credit-risk",
+      "name": "Credit Risk",
+      "category": "risk_analysis",
+      "url_pattern": "/credit-risk*",
+      "ga4_path_filter": "pagePath=~/credit.*risk"
+    },
+    {
+      "id": "legal",
+      "name": "Legal",
+      "category": "tools",
+      "url_pattern": "/legal*",
+      "ga4_path_filter": "pagePath=~/legal"
+    },
+    {
+      "id": "calculator-taxa-timbru",
+      "name": "Calculator Taxă Timbru",
+      "category": "calculators",
+      "url_pattern": "/calculator-taxa-timbru*",
+      "ga4_path_filter": "pagePath=~/calculator.*timbru"
+    },
+    {
+      "id": "top-firme",
+      "name": "Top Firme",
+      "category": "rankings",
+      "url_pattern": "/top-firme*",
+      "ga4_path_filter": "pagePath=~/top.*firme"
+    }
+  ],
+  "categories": {
+    "company_verification": "Verificare Firme",
+    "tools": "Tools (RedBill, Dosare, Legal)",
+    "calculators": "Calculatoare (Lead Magnets)",
+    "risk_analysis": "Analiză Risc",
+    "rankings": "Topuri & Rankings"
+  },
+  "notes": [
+    "URL patterns sunt placeholder-uri - vor fi actualizate după analiza site-ului real",
+    "ga4_path_filter trebuie ajustat după structura URL reală din GA4",
+    "Adaugă produse noi în array-ul 'products' când se lansează"
+  ]
+}

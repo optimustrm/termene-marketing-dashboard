@@ -1,0 +1,24 @@
+{
+  "channel_id": "UC_y6JPOGrftHSNnU9VPcXXQ",
+  "timestamp": "2026-02-27T09:11:37.626399Z",
+  "filter": {
+    "days": 1,
+    "all": false,
+    "limit": 50
+  },
+  "video_count": 1,
+  "videos": [
+    {
+      "video_id": "XWDU6g-54AY",
+      "title": "Top 10 Companii Profitabile din Teleorman \ud83d\ude80 Cre\u0219tere 155%",
+      "published_at": "2026-02-26T16:40:32Z",
+      "duration": "PT37S",
+      "metrics": {
+        "views": 96,
+        "likes": 2,
+        "comments": 0,
+        "engagement_rate": 2.08
+      }
+    }
+  ]
+}

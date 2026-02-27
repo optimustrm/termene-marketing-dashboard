@@ -1,0 +1,55 @@
+{
+  "what_works": [
+    {
+      "finding": "Cuvinte cheie în titluri performante: marius, istrate,, techangels:",
+      "data": "Top 25% videos au în medie 1125 views (vs media 535)",
+      "type": "title_analysis"
+    }
+  ],
+  "what_doesnt_work": [
+    {
+      "finding": "Video-uri cu engagement sub 1% necesită optimizare",
+      "data": "Bottom 25%: 460 views, 1.10% engagement",
+      "type": "performance_analysis"
+    },
+    {
+      "finding": "4 video-uri au multe views dar engagement scăzut",
+      "data": "Views peste medie dar engagement sub 2.55%",
+      "type": "engagement_quality"
+    }
+  ],
+  "recommendations": [
+    {
+      "priority": "high",
+      "action": "Produce mai multe interviuri long-form (60-90 min)",
+      "reasoning": "Long-form videos au cu 64% mai mult engagement decât media",
+      "expected_impact": "Creștere engagement rate și watch time"
+    },
+    {
+      "priority": "medium",
+      "action": "Revizuire 3 video-uri cu engagement sub 1.10%",
+      "reasoning": "Identifică pattern-uri comune în conținut slab performant (thumbnail, titlu, primele 30s)",
+      "expected_impact": "Îmbunătățire 20-30% engagement prin optimizare"
+    },
+    {
+      "priority": "high",
+      "action": "Optimizare CTA și engagement hooks în video-uri populare",
+      "reasoning": "4 video-uri au views mari dar engagement scăzut - potențial neexploatat",
+      "expected_impact": "Conversie views în likes/comments/shares"
+    },
+    {
+      "priority": "medium",
+      "action": "Creștere frecvență postări (target: 3-4 videouri/săptămână)",
+      "reasoning": "Doar 12 videouri în ultima lună - algoritmul YouTube favorizează consistența",
+      "expected_impact": "Creștere reach organic cu 40-60%"
+    }
+  ],
+  "data_points": {
+    "avg_views": 535.0,
+    "avg_engagement_rate": 2.55,
+    "median_views": 295.0,
+    "total_videos": 12,
+    "top_video_views": 2019,
+    "worst_video_views": 34
+  }
+}

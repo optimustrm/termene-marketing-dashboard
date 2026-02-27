@@ -1,0 +1,156 @@
+{
+  "channel_id": "UC_y6JPOGrftHSNnU9VPcXXQ",
+  "timestamp": "2026-02-27T09:11:38.621055Z",
+  "filter": {
+    "days": 7,
+    "all": false,
+    "limit": 50
+  },
+  "video_count": 12,
+  "videos": [
+    {
+      "video_id": "fhNrXB2sW0s",
+      "title": "Unde investim \u00een 2026? | Mihai Constantinescu (Amundi AM) | Cu cifrele pe mas\u0103",
+      "published_at": "2026-02-23T07:00:29Z",
+      "duration": "PT56M36S",
+      "metrics": {
+        "views": 2019,
+        "likes": 69,
+        "comments": 9,
+        "engagement_rate": 3.86
+      }
+    },
+    {
+      "video_id": "XsczWLXKkbc",
+      "title": "Unde investe\u0219ti 1 miliard de euro? | Sorin Preda, Global Vision | A fost odat\u0103 \u00een business",
+      "published_at": "2026-02-20T15:01:02Z",
+      "duration": "PT1H46S",
+      "metrics": {
+        "views": 1104,
+        "likes": 40,
+        "comments": 6,
+        "engagement_rate": 4.17
+      }
+    },
+    {
+      "video_id": "Kpf_j41pztM",
+      "title": "Sorin Preda (Global Vision), la emisiunea \u201eA fost odat\u0103 \u00een business",
+      "published_at": "2026-02-20T16:06:46Z",
+      "duration": "PT47S",
+      "metrics": {
+        "views": 726,
+        "likes": 3,
+        "comments": 1,
+        "engagement_rate": 0.55
+      }
+    },
+    {
+      "video_id": "ixIz3rlkRgA",
+      "title": "Genera\u021bia Connex: cum s-au format managerii de ast\u0103zi din Rom\u00e2nia.",
+      "published_at": "2026-02-21T07:00:37Z",
+      "duration": "PT49S",
+      "metrics": {
+        "views": 692,
+        "likes": 14,
+        "comments": 1,
+        "engagement_rate": 2.17
+      }
+    },
+    {
+      "video_id": "QoN3T2EJeW4",
+      "title": "Viitorul dolarului \u0219i pre\u021bul aurului. Analiz\u0103 economic\u0103 detaliat\u0103.",
+      "published_at": "2026-02-23T10:00:38Z",
+      "duration": "PT49S",
+      "metrics": {
+        "views": 358,
+        "likes": 5,
+        "comments": 0,
+        "engagement_rate": 1.4
+      }
+    },
+    {
+      "video_id": "qYhvkqM_EhE",
+      "title": "Care e cel mai mare risc pentru b\u0103ncile rom\u00e2ne\u0219ti?",
+      "published_at": "2026-02-20T14:01:30Z",
+      "duration": "PT45S",
+      "metrics": {
+        "views": 297,
+        "likes": 4,
+        "comments": 0,
+        "engagement_rate": 1.35
+      }
+    },
+    {
+      "video_id": "ohVVTPeXeRc",
+      "title": "2026: Anul \u201edezordinii controlate\u201d \u00een economie. Cum navig\u0103m riscul?",
+      "published_at": "2026-02-23T09:01:11Z",
+      "duration": "PT41S",
+      "metrics": {
+        "views": 293,
+        "likes": 6,
+        "comments": 0,
+        "engagement_rate": 2.05
+      }
+    },
+    {
+      "video_id": "QrVrICLOYXs",
+      "title": "De la huil\u0103 la medicamente. Jude\u021bul cu cea mai diversificat\u0103 economie",
+      "published_at": "2026-02-20T11:00:48Z",
+      "duration": "PT42S",
+      "metrics": {
+        "views": 275,
+        "likes": 5,
+        "comments": 0,
+        "engagement_rate": 1.82
+      }
+    },
+    {
+      "video_id": "6YV1Y_m-BxM",
+      "title": "Previziuni economice 2026: Cum vor evolua SUA, Europa \u0219i pie\u021bele emergente?",
+      "published_at": "2026-02-23T11:00:10Z",
+      "duration": "PT1M3S",
+      "metrics": {
+        "views": 272,
+        "likes": 5,
+        "comments": 0,
+        "engagement_rate": 1.84
+      }
+    },
+    {
+      "video_id": "Wn5D0JHvFc4",
+      "title": "Marius Istrate, TechAngels: Apar startup-uri care rezolv\u0103 probleme reale, foarte grele | Prima rund\u0103",
+      "published_at": "2026-02-25T11:00:54Z",
+      "duration": "PT44M44S",
+      "metrics": {
+        "views": 252,
+        "likes": 16,
+        "comments": 0,
+        "engagement_rate": 6.35
+      }
+    },
+    {
+      "video_id": "XWDU6g-54AY",
+      "title": "Top 10 Companii Profitabile din Teleorman \ud83d\ude80 Cre\u0219tere 155%",
+      "published_at": "2026-02-26T16:40:32Z",
+      "duration": "PT37S",
+      "metrics": {
+        "views": 96,
+        "likes": 2,
+        "comments": 0,
+        "engagement_rate": 2.08
+      }
+    },
+    {
+      "video_id": "5fmMglosgb0",
+      "title": "\u00cenceputurile \u00een imobiliare: 9 luni f\u0103r\u0103 contracte",
+      "published_at": "2026-02-22T07:00:04Z",
+      "duration": "PT59S",
+      "metrics": {
+        "views": 34,
+        "likes": 0,
+        "comments": 1,
+        "engagement_rate": 2.94
+      }
+    }
+  ]
+}
