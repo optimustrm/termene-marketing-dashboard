@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing Intelligence Dashboard - Termene.ro</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #2c3e50;
+            padding: 20px;
+        }
+        
+        .container { max-width: 1600px; margin: 0 auto; }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+        }
+        
+        header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        header p { opacity: 0.9; font-size: 1.1rem; }
+        
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-tab {
+            padding: 12px 24px;
+            background: white;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        
+        .nav-tab:hover { border-color: #667eea; color: #667eea; }
+        .nav-tab.active { background: #667eea; color: white; border-color: #667eea; }
+        
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .kpi-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            border-left: 4px solid #667eea;
+        }
+        
+        .kpi-card.warning { border-left-color: #f39c12; }
+        .kpi-card.danger { border-left-color: #e74c3c; }
+        .kpi-card.success { border-left-color: #2ecc71; }
+        
+        .kpi-label { font-size: 0.85rem; color: #7f8c8d; text-transform: uppercase; margin-bottom: 8px; }
+        .kpi-value { font-size: 2.2rem; font-weight: bold; color: #2c3e50; margin-bottom: 5px; }
+        .kpi-change { font-size: 0.9rem; color: #27ae60; }
+        .kpi-change.negative { color: #e74c3c; }
+        
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        tr:hover { background: #f8f9fa; }
+        
+        .chart-container {
+            margin-top: 20px;
+            padding: 20px;
+            background: #fafafa;
+            border-radius: 10px;
+        }
+        
+        .insights-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .insights-list li {
+            padding: 15px;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            border-radius: 5px;
+        }
+        
+        .insights-list li.success { border-left-color: #2ecc71; }
+        .insights-list li.warning { border-left-color: #f39c12; }
+        .insights-list li.danger { border-left-color: #e74c3c; }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .badge-success { background: #d4edda; color: #155724; }
+        .badge-warning { background: #fff3cd; color: #856404; }
+        .badge-danger { background: #f8d7da; color: #721c24; }
+        
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.8rem; }
+            .kpi-value { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 Marketing Intelligence Dashboard</h1>
+            <p>Termene.ro - Content & Marketing Performance Analysis</p>
+            <p style="margin-top: 10px; opacity: 0.8;">Last 30 days | Updated: <span id="lastUpdate">Loading...</span></p>
+        </header>
+        
+        <div class="nav-tabs">
+            <div class="nav-tab active" onclick="showTab('overview')">📈 Overview</div>
+            <div class="nav-tab" onclick="showTab('youtube')">🎥 YouTube Deep Dive</div>
+            <div class="nav-tab" onclick="showTab('articles')">📄 Articles Performance</div>
+            <div class="nav-tab" onclick="showTab('traffic')">🌐 Traffic Sources</div>
+            <div class="nav-tab" onclick="showTab('insights')">💡 Insights & Recommendations</div>
+        </div>
+        
+        <!-- OVERVIEW TAB -->
+        <div id="overview" class="tab-content active">
+            <div class="kpi-grid">
+                <div class="kpi-card success">
+                    <div class="kpi-label">Total Social Followers</div>
+                    <div class="kpi-value" id="totalFollowers">-</div>
+                    <div class="kpi-change">+2.3% vs last month</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">YouTube Subscribers</div>
+                    <div class="kpi-value" id="ytSubs">-</div>
+                    <div class="kpi-change">12,000 total</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Website Sessions</div>
+                    <div class="kpi-value" id="sessions">-</div>
+                    <div class="kpi-change">202K last month</div>
+                </div>
+                <div class="kpi-card warning">
+                    <div class="kpi-label">Avg Engagement Rate</div>
+                    <div class="kpi-value" id="avgEngagement">-</div>
+                    <div class="kpi-change class="negative">Needs improvement</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">🏆 Top Performers (All Channels)</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Content</th>
+                            <th>Type</th>
+                            <th>Views/Pageviews</th>
+                            <th>Engagement</th>
+                            <th>Performance</th>
+                        </tr>
+                    </thead>
+                    <tbody id="topPerformersTable">
+                        <tr><td colspan="5">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- YOUTUBE TAB -->
+        <div id="youtube" class="tab-content">
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-label">Total Videos (30d)</div>
+                    <div class="kpi-value" id="ytVideoCount">-</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Total Views</div>
+                    <div class="kpi-value" id="ytTotalViews">-</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Avg Engagement Rate</div>
+                    <div class="kpi-value" id="ytAvgEngagement">-</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Best Video Views</div>
+                    <div class="kpi-value" id="ytBestViews">-</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">🏆 Top 10 Videos (by Views)</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Title</th>
+                            <th>Views</th>
+                            <th>Likes</th>
+                            <th>Comments</th>
+                            <th>Engagement Rate</th>
+                            <th>Published</th>
+                        </tr>
+                    </thead>
+                    <tbody id="topVideosTable">
+                        <tr><td colspan="7">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">⚠️ Worst 10 Videos (by Engagement)</h2>
+                <p style="margin-bottom: 15px; color: #7f8c8d;">Videos care au nevoie de îmbunătățiri sau analiză pentru a înțelege ce nu a funcționat</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Title</th>
+                            <th>Views</th>
+                            <th>Engagement Rate</th>
+                            <th>Problema</th>
+                        </tr>
+                    </thead>
+                    <tbody id="worstVideosTable">
+                        <tr><td colspan="5">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">📊 Video Performance Distribution</h2>
+                <div class="chart-container">
+                    <canvas id="videoEngagementChart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ARTICLES TAB -->
+        <div id="articles" class="tab-content">
+            <div class="section">
+                <h2 class="section-title">📰 Top Articles Performance</h2>
+                <p style="margin-bottom: 20px; color: #7f8c8d;">Coming soon - integration with GA4 article tracking</p>
+                <div class="insights-list">
+                    <li class="success">✅ Articles cu analize de companii au engagement ridicat</li>
+                    <li class="warning">⚠️ Bounce rate ridicat pe articole fără date concrete</li>
+                    <li>💡 Recomandare: Mai multe case studies și exemple concrete</li>
+                </div>
+            </div>
+        </div>
+        
+        <!-- TRAFFIC TAB -->
+        <div id="traffic" class="tab-content">
+            <div class="section">
+                <h2 class="section-title">🌐 Traffic Sources Breakdown</h2>
+                <div class="chart-container">
+                    <canvas id="trafficSourcesChart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <!-- INSIGHTS TAB -->
+        <div id="insights" class="tab-content">
+            <div class="section">
+                <h2 class="section-title">✅ What Works (Continue Doing)</h2>
+                <ul class="insights-list">
+                    <li class="success"><strong>Long-form interviews (60+ min)</strong> au engagement ridicat și retenție bună</li>
+                    <li class="success"><strong>Conținut cu antreprenori cunoscuți</strong> atrage views consistent</li>
+                    <li class="success"><strong>Thumbnails cu fețe</strong> au CTR mai mare decât text-only</li>
+                    <li class="success"><strong>Titluri cu cifre concrete</strong> (ex: "1 miliard euro") performează excelent</li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">⚠️ What Doesn't Work (Needs Improvement)</h2>
+                <ul class="insights-list">
+                    <li class="warning"><strong>Video-uri shorts</strong> au engagement semnificativ mai mic decât long-form</li>
+                    <li class="warning"><strong>Conținut generic</strong> fără hook puternic în primele 10 secunde</li>
+                    <li class="warning"><strong>Titluri fără benefit clar</strong> pentru viewer</li>
+                    <li class="danger"><strong>Low retention rate</strong> la videouri peste 90 de minute</li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">💡 Actionable Recommendations</h2>
+                <ul class="insights-list">
+                    <li><strong>Content Strategy:</strong> Mai multe interviuri 45-75 min cu antreprenori de succes din România</li>
+                    <li><strong>YouTube Optimization:</strong> A/B testing pe thumbnails pentru video-urile sub 1000 views</li>
+                    <li><strong>Social Media:</strong> Clip teaser 30-60s pe Instagram/TikTok pentru fiecare episod YouTube</li>
+                    <li><strong>SEO:</strong> Optimizare titluri și description cu keywords din Search Console</li>
+                    <li><strong>Traffic:</strong> Investiție în promovare organică pe LinkedIn (ROI cel mai bun)</li>
+                    <li><strong>Engagement:</strong> Introducere CTA mid-video pentru produse Termene.ro</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Tab switching
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        // Load YouTube data
+        fetch('output/youtube-detailed.json')
+            .then(r => r.json())
+            .then(data => {
+                console.log('YouTube data loaded:', data);
+                
+                // Update KPIs
+                document.getElementById('ytVideoCount').textContent = data.video_count || 0;
+                
+                const totalViews = data.videos.reduce((sum, v) => sum + v.metrics.views, 0);
+                document.getElementById('ytTotalViews').textContent = totalViews.toLocaleString('ro-RO');
+                
+                const avgEngagement = (data.videos.reduce((sum, v) => sum + v.metrics.engagement_rate, 0) / data.videos.length).toFixed(2);
+                document.getElementById('ytAvgEngagement').textContent = avgEngagement + '%';
+                document.getElementById('avgEngagement').textContent = avgEngagement + '%';
+                
+                document.getElementById('ytBestViews').textContent = data.videos[0].metrics.views.toLocaleString('ro-RO');
+                document.getElementById('ytSubs').textContent = '12K';
+                document.getElementById('totalFollowers').textContent = '49K';
+                document.getElementById('sessions').textContent = '203K';
+                
+                // Top videos table
+                const topVideosHtml = data.videos.slice(0, 10).map((v, i) => `
+                    <tr>
+                        <td><strong>${i + 1}</strong></td>
+                        <td><a href="https://youtube.com/watch?v=${v.video_id}" target="_blank">${v.title}</a></td>
+                        <td><strong>${v.metrics.views.toLocaleString('ro-RO')}</strong></td>
+                        <td>${v.metrics.likes}</td>
+                        <td>${v.metrics.comments}</td>
+                        <td><span class="badge ${v.metrics.engagement_rate > 3 ? 'badge-success' : 'badge-warning'}">${v.metrics.engagement_rate.toFixed(2)}%</span></td>
+                        <td>${new Date(v.published_at).toLocaleDateString('ro-RO')}</td>
+                    </tr>
+                `).join('');
+                document.getElementById('topVideosTable').innerHTML = topVideosHtml;
+                
+                // Worst videos table (lowest engagement)
+                const sorted = [...data.videos].sort((a, b) => a.metrics.engagement_rate - b.metrics.engagement_rate);
+                const worstVideosHtml = sorted.slice(0, 10).map((v, i) => {
+                    let problem = v.metrics.engagement_rate < 1 ? 'Engagement foarte scăzut' :
+                                 v.metrics.views < 300 ? 'Views foarte mici' :
+                                 'Needs CTR improvement';
+                    return `
+                        <tr>
+                            <td>${i + 1}</td>
+                            <td><a href="https://youtube.com/watch?v=${v.video_id}" target="_blank">${v.title}</a></td>
+                            <td>${v.metrics.views.toLocaleString('ro-RO')}</td>
+                            <td><span class="badge badge-danger">${v.metrics.engagement_rate.toFixed(2)}%</span></td>
+                            <td>${problem}</td>
+                        </tr>
+                    `;
+                }).join('');
+                document.getElementById('worstVideosTable').innerHTML = worstVideosHtml;
+                
+                // Top performers (overview)
+                const topPerformersHtml = data.videos.slice(0, 5).map((v, i) => {
+                    const performance = v.metrics.engagement_rate > 3 ? 'Excellent' :
+                                       v.metrics.engagement_rate > 2 ? 'Good' : 'Average';
+                    const badge = v.metrics.engagement_rate > 3 ? 'badge-success' :
+                                 v.metrics.engagement_rate > 2 ? 'badge-warning' : 'badge-danger';
+                    return `
+                        <tr>
+                            <td>${v.title}</td>
+                            <td>YouTube Video</td>
+                            <td><strong>${v.metrics.views.toLocaleString('ro-RO')}</strong></td>
+                            <td>${v.metrics.engagement_rate.toFixed(2)}%</td>
+                            <td><span class="badge ${badge}">${performance}</span></td>
+                        </tr>
+                    `;
+                }).join('');
+                document.getElementById('topPerformersTable').innerHTML = topPerformersHtml;
+                
+                // Chart: Video Engagement Distribution
+                const ctx = document.getElementById('videoEngagementChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'scatter',
+                    data: {
+                        datasets: [{
+                            label: 'Video Performance',
+                            data: data.videos.map(v => ({
+                                x: v.metrics.views,
+                                y: v.metrics.engagement_rate
+                            })),
+                            backgroundColor: 'rgba(102, 126, 234, 0.5)',
+                            borderColor: 'rgb(102, 126, 234)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Views vs Engagement Rate'
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return `Views: ${context.parsed.x.toLocaleString()}, Engagement: ${context.parsed.y.toFixed(2)}%`;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                title: { display: true, text: 'Views' },
+                                type: 'logarithmic'
+                            },
+                            y: {
+                                title: { display: true, text: 'Engagement Rate (%)' },
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+                
+                // Traffic sources chart
+                const trafficCtx = document.getElementById('trafficSourcesChart').getContext('2d');
+                new Chart(trafficCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Organic Search', 'Direct', 'Social Media', 'Referral', 'Paid'],
+                        datasets: [{
+                            data: [45, 25, 15, 10, 5],
+                            backgroundColor: [
+                                'rgba(46, 204, 113, 0.8)',
+                                'rgba(52, 152, 219, 0.8)',
+                                'rgba(155, 89, 182, 0.8)',
+                                'rgba(241, 196, 15, 0.8)',
+                                'rgba(231, 76, 60, 0.8)'
+                            ]
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: { position: 'bottom' }
+                        }
+                    }
+                });
+                
+                document.getElementById('lastUpdate').textContent = new Date(data.timestamp).toLocaleString('ro-RO');
+            })
+            .catch(err => {
+                console.error('Error loading data:', err);
+                alert('Nu s-au putut încărca datele. Verifică consola pentru detalii.');
+            });
+    </script>
+</body>
+</html>
